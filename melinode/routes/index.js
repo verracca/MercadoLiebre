@@ -1,13 +1,13 @@
-var express = require('express');
-var router = express.Router();
-var product= require ("../controller/product-controller")
+const express = require('express');
+const router = express.Router();
+const product= require ("../controller/product-controller")
+const id= require ("../controller/idController")
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
 
-router.get('/api/items?q=:query', product.results)
+router.get('/api/items/:query', product.results)
+router.get('/api/items/:id', id.results)
+
 
 module.exports = router;
  

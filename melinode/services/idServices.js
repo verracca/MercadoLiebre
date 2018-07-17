@@ -2,8 +2,8 @@ const restler = require('restler')
 
 let self= {}
 
-self.getAdaProducts = (items) =>{
-    const url = "https://api.mercadolibre.com/sites/MLA/search?q="+items
+self.getProductById = (id) =>{
+    const url = "https://api.mercadolibre.com/items/"+ id
     return new Promise (function(resolve, reject){
         restler.get(url)
         .on ('success', function(result){
@@ -15,6 +15,4 @@ self.getAdaProducts = (items) =>{
         })
     })
 }
-
-
 module.exports= self
