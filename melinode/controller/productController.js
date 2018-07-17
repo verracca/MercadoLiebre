@@ -13,11 +13,11 @@ self.results = async (req, res) =>{
         
         res.json({
             autor:{
-                name: "Veronica",
+                name: "Maria Veronica",
                 lastName: "Racca",
             },
-            categories: createCategories(results),
-            
+            categories: getCategories(results),
+            items: getItems(results),
                 
         } ) 
 
@@ -26,15 +26,40 @@ self.results = async (req, res) =>{
     }
 }
 
-const createCategories = (resultado) => {
-    const categories= resultado.available_filters[0].values
-    const categoryNames = []
+const getCategories = (resultado) => {
+    const categories = resultado.filters.find(result=>{
+        return result.id === 'category'
+    })
 
-    for (let i = 0; i < categories.length; i++) {
-        categoryNames.push(categories[i].name)
-        
+    if (!categories){
+        return []
     }
-    return categoryNames
+    const category = categories.values[0]
+
+    return category.path_from_root.map((value) => {
+        return value.name
+    })
+
+}
+
+const getItems = (resultado) => {
+    const items = resultado.results.map((item)=>{
+        const amount = Math.floor(item.price)
+        const decimals = Math.floor((item.price - amount) * 100 )
+        return {
+            id:item.id,
+            title: item.title,
+            price: {
+                currency:item.currency_id,
+                amount: amount, 
+                decimals: decimals,
+            },
+            picture:item.thumbnail,
+            condition: item.condition,
+            free_shipping: item.shipping.free_shipping,
+        }
+    })
+    return items
 }
 
 module.exports= self

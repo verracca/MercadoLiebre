@@ -8,10 +8,8 @@ self.getProductById = (id) =>{
     return new Promise (function(resolve, reject){
         restler.get(url)
         .on ('success', function(result){
-            console.log(result)
             resolve(result)
         }).on('fail',(error)=>{
-            console.log(error)
             reject(error)
         })
     })
@@ -22,10 +20,8 @@ self.getDescriptionById = (id) =>{
 return new Promise (function(resolve, reject){
     restler.get(url)
     .on ('success', function(result){
-        console.log(result)
         resolve(result)
     }).on('fail',(error)=>{
-        console.log(error)
         reject(error)
     })
 })

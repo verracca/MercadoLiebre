@@ -7,10 +7,8 @@ self.getAdaProducts = (items) =>{
     return new Promise (function(resolve, reject){
         restler.get(url)
         .on ('success', function(result){
-            console.log(result)
             resolve(result)
         }).on('fail',(error)=>{
-            console.log(error)
             reject(error)
         })
     })
