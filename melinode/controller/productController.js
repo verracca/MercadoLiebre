@@ -3,6 +3,7 @@ const productServices = require("../services/productServices");
 let self={}
 
 self.results = async (req, res) =>{
+    //console.log(req.query.q)
     if(!req.query.q){
         res.json({})
     }
