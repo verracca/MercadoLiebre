@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './App.css'
 import SearchBox from "./SearchBox/SearchBox"
 import ItemDescription from "./ItemDescription/ItemDescription"
-import SerachResults from "./SearchResults/SearchResults"
+import SearchResults from "./SearchResults/SearchResults"
 
 class App extends Component {
   render() {
@@ -11,7 +11,7 @@ class App extends Component {
       <Router>
         <div>
           <Route path="/" component={SearchBox} />
-          <Route exact path="/items" component={SerachResults} />
+          <Route exact path="/items" component={SearchResults} />
           <Route path="/items/:id" component={ItemDescription} />
         </div>
       </Router>
