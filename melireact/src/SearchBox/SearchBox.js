@@ -8,7 +8,7 @@ class SearchBox extends Component{
         const searchQuery = queryString.parse(this.props.location.search).search
 
         this.state={
-            searchQuery: props.query|| searchQuery || ""
+            searchQuery: searchQuery || ""
         }
     }
 
@@ -17,10 +17,6 @@ class SearchBox extends Component{
         this.setState({
             searchQuery:newValue
         })
-    }
-    
-    handleSearch(){
-        console.log(this.state.searchQuery)
     }
 
     render(){

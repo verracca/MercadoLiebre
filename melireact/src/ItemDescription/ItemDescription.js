@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 class ItemDescription extends Component{
     constructor(props){
-    super(props)
-    const productId= props.match.params.id
+        super(props)
+        const productId = props.match.params.id
 
-    this.state={
-        productId:productId,
-    }
+        this.state={
+            productId:productId,
+        }
     }
     async componentDidMount(){
         const request = await fetch("/api/items/" +this.state.productId)
@@ -16,7 +16,7 @@ class ItemDescription extends Component{
         this.setState({
             item: results.item,
         })
-       }
+    }
 
     render(){
         const item = this.state.item
@@ -25,7 +25,11 @@ class ItemDescription extends Component{
                 <h3>Searching Product</h3>
             )
         }
-        const freeShipping = item.free_shipping ? "Envio gratuito" : ""
+        var freeShipping =  ""
+
+        if (item.free_shipping){
+            freeShipping = "Envio gratuito" 
+        }
 
         return(
             <div>
@@ -35,8 +39,7 @@ class ItemDescription extends Component{
             <div>{item.condition}</div>
             <div>{freeShipping}</div>
             <img src={item.picture}/>
-            <h5>{item.description}</h5>
-            
+            <h5>{item.description}</h5>    
         </div>
         )
     }

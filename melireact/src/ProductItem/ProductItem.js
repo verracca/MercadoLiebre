@@ -2,9 +2,13 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 const ProductItem = (props) => {
-    const { item } = props
+    const item = props.item
 
-    const freeShipping = item.free_shipping ? "Envio gratuito" : ""
+    var freeShipping =  ""
+
+    if (item.free_shipping){
+        freeShipping = "Envio gratuito" 
+    }
 
     return(
         <div>

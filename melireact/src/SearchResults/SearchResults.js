@@ -12,6 +12,7 @@ class SearchResults extends Component{
             categories: [],
         }
     }
+    
     async fetchItems(){
         const searchQuery = queryString.parse(this.props.location.search).search
 
