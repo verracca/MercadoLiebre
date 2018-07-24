@@ -1,5 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import "./ProductItem.css"
+
 
 const ProductItem = (props) => {
     const item = props.item
@@ -11,18 +13,22 @@ const ProductItem = (props) => {
     }
 
     return(
-        <div>
         <Link to={"/items/" + item.id}>
-        <div id={item.id}>
-            <img src={item.picture} />
-            <h2>{item.title}</h2>
-            <h4>{item.price.currency} {item.price.amount},{item.price.decimals}</h4>
-            <div>{item.condition}</div>
-            <div>{freeShipping}</div>
+        
+        <div className="main-product-container" id={item.id}>
+            <div className="img-container">
+                <img src={item.picture} />
+            </div>    
+            <div className="product-container">
+                <h2>{item.title}</h2>
+                <h4>{item.price.currency} {item.price.amount},{item.price.decimals}</h4>
+                <div>{item.condition}</div>
+                <div>{freeShipping}</div> 
+            </div>
 
         </div>
         </Link>
-        </div>
+       
     )
 }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import queryString from "query-string"
+import "./SearchBox.css"
 
 class SearchBox extends Component{
     constructor(props){
@@ -21,14 +22,15 @@ class SearchBox extends Component{
 
     render(){
         return(
-            <div>
-                <input
+            <div className= "container-searchbox">
+            <form> <input className="input-container"
                 onChange={this.handleInputChange.bind(this)} 
                 value = {this.state.searchQuery}
                 ></input>
                 <Link to={"/items?search=" + this.state.searchQuery}>
-                    <button>Buscar</button>
+                    <button className="boton">Buscar</button>
                 </Link>
+            </form>
             </div>
         )
     }

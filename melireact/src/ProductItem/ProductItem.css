@@ -1,0 +1,17 @@
+.main-product-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 70%;
+    margin: auto;
+    background: whitesmoke;
+}
+.img-container{
+    display: flex;
+    padding: 40px;
+
+}
+.product-container{
+    padding: 20px;
+
+}
